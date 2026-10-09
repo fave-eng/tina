@@ -1,0 +1,3 @@
+[functions.kristina-oge-reports]
+# Доступ не публичный: функция сама проверяет секрет REPORT_CRON_SECRET.
+verify_jwt = false
