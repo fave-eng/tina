@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Диагностика Telegram · ОГЭ 2027</title>
+  <link rel="stylesheet" href="styles.css?v=7">
+  <script defer src="config.js?v=7"></script>
+  <style>
+    :root{--d-bg:#f7f8fc;--d-ink:#242437;--d-muted:#71738a;--d-purple:#5148c9;--d-line:#e6e8f0}
+    body{background:var(--d-bg);color:var(--d-ink);font-family:Manrope,system-ui,-apple-system,Segoe UI,sans-serif}
+    .diag-shell{max-width:950px;margin:0 auto;padding:30px 20px 95px}.diag-top{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:28px}
+    .diag-brand{display:flex;gap:11px;align-items:center;font-weight:800}.diag-logo{width:43px;height:43px;border-radius:14px;background:var(--d-purple);display:grid;place-items:center;color:white;font-size:23px}
+    .diag-hero{padding:32px 32px 29px;border-radius:26px;background:linear-gradient(125deg,#5148c9,#8571da);color:#fff;margin:0 0 18px}
+    .diag-hero h1{color:#fff;margin:0 0 9px;font-size:clamp(25px,3vw,36px)}.diag-hero p{color:#e9e6ff;margin:0;max-width:650px;line-height:1.65}
+    .diag-box{background:#fff;border:1px solid var(--d-line);border-radius:23px;padding:26px;margin-bottom:17px;box-shadow:0 10px 34px rgba(38,40,73,.035)}
+    .diag-box h2{font-size:19px;margin:0 0 8px}.diag-box p{line-height:1.7;margin-bottom:15px}.diag-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .diag-button{border-radius:12px;background:var(--d-purple);border:1px solid var(--d-purple);color:#fff;padding:12px 17px;min-height:46px;font-weight:800}
+    .diag-button.alt{background:#fff;color:var(--d-purple);border-color:#d4d0f6}.diag-button:disabled{opacity:.5;cursor:not-allowed}
+    .diag-steps{display:grid;gap:10px;margin-top:18px}.diag-step{border:1px solid #e9eaf3;border-radius:15px;display:grid;grid-template-columns:auto 1fr;gap:12px;padding:15px;align-items:start}
+    .diag-dot{border-radius:9px;background:#f1f1f6;color:#74758a;font-weight:900;padding:5px 9px;min-width:79px;text-align:center;font-size:11px}
+    .diag-step[data-state="ok"] .diag-dot{background:#e6f7ee;color:#207d53}.diag-step[data-state="bad"] .diag-dot{background:#fff0ed;color:#b2443e}.diag-step[data-state="warn"] .diag-dot{background:#fff6e5;color:#8c6116}
+    .diag-step strong{display:block;font-size:14px;margin-bottom:3px}.diag-step p{color:#676b81;margin:0;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+    .diag-note{padding:14px 16px;background:#f3f1ff;color:#4c477b;border-radius:13px;font-size:12px;line-height:1.65;margin:15px 0}
+    .diag-warning{background:#fff7e8;color:#79572a}.diag-confirm{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#4d4f67;line-height:1.5;margin:16px 0}.diag-confirm input{width:18px;height:18px;accent-color:var(--d-purple);flex:none;margin-top:2px}
+    .diag-result{border-radius:13px;padding:14px 16px;background:#f4f5fa;color:#3e4260;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;min-height:48px;font-size:13px}
+    .diag-result[data-state="ok"]{background:#eaf9ef;color:#176a49}.diag-result[data-state="bad"]{background:#fff1ef;color:#963e38}.diag-result[data-state="warn"]{background:#fff6e5;color:#825b22}
+    .diag-small{font-size:12px;color:var(--d-muted)}.diag-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f6f6fa;border-radius:7px;padding:2px 5px;font-size:.9em}.diag-help{border-top:1px solid var(--d-line);margin-top:16px;padding-top:17px}
+    @media(max-width:650px){.diag-shell{padding:16px 13px 80px}.diag-hero,.diag-box{padding:20px 17px;border-radius:19px}.diag-step{padding:12px;gap:9px}.diag-dot{min-width:65px}}
+  </style>
+</head>
+<body>
+<main class="diag-shell">
+  <header class="diag-top">
+    <div class="diag-brand"><div class="diag-logo" aria-hidden="true">✦</div><span>МойОГЭ.<br><span class="diag-small">Диагностика · Кристина · 2027</span></span></div>
+    <a class="diag-button alt" href="index.html#/дневник">← Назад в дневник</a>
+  </header>
+  <section class="diag-hero"><span style="font-size:12px;font-weight:800;letter-spacing:1.2px;opacity:.8">ПОДКЛЮЧЕНИЕ И УВЕДОМЛЕНИЯ</span><h1>Диагностика Telegram</h1><p>Проверим, почему тестовое сообщение не отправляется. Сначала выполняются безопасные проверки без отправки в группу. Затем можно отдельно разрешить одно тестовое сообщение.</p></section>
+  <section class="diag-box" aria-labelledby="checksTitle">
+    <h2 id="checksTitle">1. Проверка подключения</h2>
+    <p class="diag-small">Диагностика не изменяет прогресс, записи дневника и настройки Telegram.</p>
+    <div class="diag-actions"><button id="runChecks" class="diag-button" type="button">Проверить соединение</button><button id="copyResults" class="diag-button alt" type="button">Скопировать результат</button></div>
+    <div class="diag-steps" id="steps" aria-live="polite">
+      <div class="diag-step" id="step-config"><span class="diag-dot">ОЖИДАНИЕ</span><div><strong>Конфигурация сайта</strong><p>URL Supabase и публичный ключ</p></div></div>
+      <div class="diag-step" id="step-session"><span class="diag-dot">ОЖИДАНИЕ</span><div><strong>Вход в аккаунт</strong><p>Наличие и действительность сессии Кристины</p></div></div>
+      <div class="diag-step" id="step-network"><span class="diag-dot">ОЖИДАНИЕ</span><div><strong>Связь с Supabase</strong><p>Можно ли получить ответ от сервера</p></div></div>
+      <div class="diag-step" id="step-function"><span class="diag-dot">ОЖИДАНИЕ</span><div><strong>Доступность функции Telegram</strong><p>Без отправки сообщения</p></div></div>
+      <div class="diag-step" id="step-request"><span class="diag-dot">ОЖИДАНИЕ</span><div><strong>Запрос из браузера (CORS)</strong><p>Проверим заголовки и HTTP-ответ безопасным запросом</p></div></div>
+    </div>
+    <div class="diag-help"><strong>Вывод</strong><div id="recommendation" class="diag-result" role="status">Нажми «Проверить соединение».</div></div>
+  </section>
+  <section class="diag-box" aria-labelledby="testTitle">
+    <h2 id="testTitle">2. Тестовая отправка в Telegram</h2>
+    <p>Отправляет <strong>одно настоящее сообщение</strong> в тему группы. Этот шаг не входит в обычную диагностику.</p>
+    <label class="diag-confirm"><input id="confirmSend" type="checkbox"><span>Я разрешаю отправить одно тестовое сообщение в нашу Telegram-группу.</span></label>
+    <button id="sendTest" class="diag-button" type="button" disabled>Отправить тест сейчас</button>
+    <div class="diag-result" id="telegramResult" role="status" style="margin-top:14px">Сначала проверь соединение и подтверди отправку.</div>
+  </section>
+  <section class="diag-box">
+    <h2>3. Если сообщение не приходит</h2>
+    <p class="diag-small">Сверяй настройки с результатами выше. Не присылай скриншоты секретных ключей и токенов.</p>
+    <div class="diag-note">Ошибка <strong>Failed to send a request to the Edge Function</strong> часто означает блокировку запроса браузером из-за CORS. В Edge Function в <span class="diag-code">Access-Control-Allow-Headers</span> должен присутствовать <span class="diag-code">x-client-info</span> наряду с <span class="diag-code">authorization</span>, <span class="diag-code">apikey</span> и <span class="diag-code">content-type</span>.</div>
+    <div class="diag-note diag-warning">Если запрос доходит до функции, но Telegram возвращает <strong>chat not found</strong> или <strong>message thread not found</strong>, нужно проверить числовые ID группы и темы. Число в конце Telegram-ссылки не всегда является ID темы.</div>
+    <p class="diag-small">Страница специально не отображает API-ключи, пароли, токены и содержимое дневника. Копирование результата включает только диагностические статусы.</p>
+  </section>
+</main>
+<script>
+(()=>{'use strict';
+  const byId=id=>document.getElementById(id);
+  const BASESTORAGE='oge-student-auth-2027';
+  const FUNCTION='kristina-oge-diary-reminder';
+  const notes=[];
+  const diag={config:false,session:false,network:false,edge:false,probe:false,userToken:''};
+  const setStep=(id,state,message)=>{
+    const el=byId('step-'+id);
+    const st={ok:'OK',bad:'ОШИБКА',warn:'ВНИМАНИЕ',pending:'ПРОВЕРКА'}[state]||'ОЖИДАНИЕ';
+    el.dataset.state=state;el.querySelector('.diag-dot').textContent=st;
+    el.querySelector('p').textContent=message;
+    const old=notes.findIndex(x=>x.id===id);if(old>=0)notes.splice(old,1);
+    notes.push({id,status:st,detail:message});
+  };
+  const setResult=(txt,state='')=>{byId('recommendation').textContent=txt;byId('recommendation').dataset.state=state;};
+  const clean=s=>String(s||'').replace(/Bearer\s+\S+/ig,'Bearer [скрыто]').replace(/(?:sk-|sb_secret_|sb_publishable_|eyJ)[a-z0-9_.-]{15,}/ig,'[скрыто]').slice(0,210);
+  const url=()=>window.OGE_CONFIG?.cloud?.url?.replace(/\/+$/,'')||'';
+  const publicKey=()=>window.OGE_CONFIG?.cloud?.publishableKey||'';
+  const validConfig=()=>window.OGE_CONFIG?.cloud?.enabled===true && /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(url()) && publicKey().length>=20;
+  const sessionFromBrowser=()=>{
+    try{
+      const stored=localStorage.getItem(BASESTORAGE);
+      if(!stored)return null;
+      const v=JSON.parse(stored);
+      if(!v||typeof v.access_token!=='string'||v.access_token.length<40)return null;
+      return v;
+    }catch(_e){return null;}
+  };
+  async function timedFetch(path,options={}){
+    const ac=new AbortController(),tid=setTimeout(()=>ac.abort(),12000);
+    try{return await fetch(path,{...options,signal:ac.signal,cache:'no-store',credentials:'omit'})}
+    finally{clearTimeout(tid)}
+  }
+  async function parsed(res){
+    try{const data=await res.json();return data&&typeof data==='object'?data:{}}
+    catch(_e){return {}}
+  }
+  function showReady(){byId('sendTest').disabled=!(diag.session&&diag.probe&&byId('confirmSend').checked);}
+  function failReason(e){
+    if(e?.name==='AbortError')return 'Превышено время ожидания (12 секунд): сервер не ответил.';
+    return 'Браузер заблокировал запрос или нет соединения (возможная CORS-ошибка). '+clean(e?.message||'');
+  }
+  async function runChecks(){
+    byId('runChecks').disabled=true;byId('sendTest').disabled=true;byId('telegramResult').textContent='Отправка ещё не выполнялась.';
+    Object.assign(diag,{config:false,session:false,network:false,edge:false,probe:false,userToken:''});
+    ['config','session','network','function','request'].forEach(id=>setStep(id,'pending','Проверяем…'));
+    setResult('Идёт проверка. Сообщения в Telegram не отправляются.');
+    try{
+      diag.config=validConfig();
+      setStep('config',diag.config?'ok':'bad',diag.config?'Настройки Supabase найдены и имеют корректный формат.':'В config.js отключено облако или отсутствуют адрес Supabase / публичный ключ.');
+      if(!diag.config){setResult('Сначала проверь файл config.js: cloud.enabled, cloud.url и cloud.publishableKey. Не вставляй service_role или секретный ключ в сайт.','bad');return;}
+      const session=sessionFromBrowser();
+      if(!session){setStep('session','bad','В этом браузере нет сохранённой сессии. Открой Настройки и войди в аккаунт Кристины.');}
+      else if(Number(session.expires_at||0)>0 && session.expires_at*1000<Date.now()){
+        setStep('session','warn','Сессия в браузере истекла. Повторно войди через Настройки сайта.');
+      }else{diag.userToken=session.access_token;setStep('session','warn','Сессия найдена, проверяем действительность на сервере…');}
+      let healthRes;
+      try{
+        healthRes=await timedFetch(url()+'/auth/v1/health');
+        diag.network=true;
+        setStep('network','ok','Supabase отвечает: HTTP '+healthRes.status+'.');
+      }catch(e){setStep('network','bad',failReason(e));setResult('Не удаётся подключиться к Supabase. Проверь интернет, блокировщики, VPN и правильность URL.','bad');return;}
+      if(diag.userToken){
+        try{
+          const response=await timedFetch(url()+'/auth/v1/user',{headers:{apikey:publicKey(),Authorization:'Bearer '+diag.userToken}});
+          if(response.ok){diag.session=true;setStep('session','ok','Авторизация подтверждена сервером.');}
+          else {diag.userToken='';setStep('session','bad','Сессия отклонена сервером: HTTP '+response.status+'. Повторно войди в Настройках.');}
+        }catch(e){diag.userToken='';setStep('session','warn','Не удалось подтвердить сессию: '+failReason(e));}
+      }
+      const endpoint=url()+'/functions/v1/'+FUNCTION;
+      try{
+        const r=await timedFetch(endpoint,{method:'GET'});
+        diag.edge=true;setStep('function',r.status===405?'ok':(r.status===401?'warn':'ok'),'Сервер функции отвечает: HTTP '+r.status+'. '+(r.status===405?'Для GET это нормально.':'Проверяем POST отдельно.'));
+      }catch(e){setStep('function','bad',failReason(e));setResult('Не удалось получить ответ функции. Проверь название функции, ACTIVE и настройки CORS.','bad');return;}
+      // Unknown mode never sends Telegram messages, but exercises the same browser headers as Supabase JS.
+      try{
+        const headers={'Content-Type':'application/json',apikey:publicKey(),'x-client-info':'supabase-js-web/2.58.0',Authorization:'Bearer '+(diag.userToken||publicKey())};
+        const r=await timedFetch(endpoint,{method:'POST',headers,body:JSON.stringify({mode:'diagnostics-probe'})});
+        const data=await parsed(r);
+        if(r.status===400 && /unknown.mode/i.test(String(data.error||''))){diag.probe=true;setStep('request','ok','POST и CORS работают. Функция ответила ожидаемым HTTP 400 на безопасный диагностический запрос.');}
+        else if(r.status===401||r.status===403){setStep('request','warn','POST доступен, но сервер отклонил авторизацию: HTTP '+r.status+' ('+clean(data.error||'нет описания')+').');}
+        else if(r.status>=500){setStep('request','bad','Функция вернула HTTP '+r.status+': '+clean(data.error||'ошибка сервера')+'. Проверь Edge Function Logs и секреты.');}
+        else{setStep('request','warn','Ответ HTTP '+r.status+': '+clean(data.error||'нет описания')+'. Нужна проверка серверного кода.');}
+      }catch(e){setStep('request','bad',failReason(e));setResult('GET функции отвечает, но POST блокируется. Наиболее вероятно, не указан x-client-info в Access-Control-Allow-Headers. Исправь его в Edge Function и заново Deploy.','bad');return;}
+      if(diag.probe && diag.session)setResult('Подключение и авторизация работают. Теперь можешь подтвердить отдельную тестовую отправку в Telegram.','ok');
+      else if(!diag.session)setResult('Запрос к функции прошёл. Для реального теста нужно повторно войти в аккаунт Кристины через Настройки.','warn');
+      else setResult('Функция отвечает, но есть ошибка POST. Смотри HTTP-код выше и журнал Edge Function Logs.','warn');
+    }finally{byId('runChecks').disabled=false;showReady();}
+  }
+  async function sendTest(){
+    if(!diag.session||!diag.probe||!byId('confirmSend').checked)return;
+    byId('sendTest').disabled=true;byId('telegramResult').textContent='Отправляем тестовое сообщение…';
+    try{
+      const r=await timedFetch(url()+'/functions/v1/'+FUNCTION,{method:'POST',headers:{'Content-Type':'application/json',apikey:publicKey(),'x-client-info':'supabase-js-web/2.58.0',Authorization:'Bearer '+diag.userToken},body:JSON.stringify({mode:'test'})});
+      const body=await parsed(r);
+      if(r.ok&&body.delivered===true&&body.message_id){byId('telegramResult').dataset.state='ok';byId('telegramResult').textContent='Telegram API подтвердил отправку сообщения №'+Number(body.message_id)+'. Проверь, что оно появилось именно в нужной теме.';}
+      else{byId('telegramResult').dataset.state='bad';byId('telegramResult').textContent='Сервер вернул HTTP '+r.status+': '+clean(body.error||'нет подтверждения доставки')+'.';}
+    }catch(e){byId('telegramResult').dataset.state='bad';byId('telegramResult').textContent=failReason(e);}
+    finally{byId('confirmSend').checked=false;showReady();}
+  }
+  byId('runChecks').addEventListener('click',runChecks);
+  byId('sendTest').addEventListener('click',sendTest);
+  byId('confirmSend').addEventListener('change',showReady);
+  byId('copyResults').addEventListener('click',async()=>{
+    const body=['ОГЭ-2027 / Telegram / диагностика','Дата: '+new Date().toLocaleString('ru-RU'),...notes.map(n=>n.id+': '+n.status+' — '+n.detail),'Вывод: '+byId('recommendation').textContent,'Тест: '+byId('telegramResult').textContent,'Секреты и токены в отчёте отсутствуют.'].join('\n');
+    try{await navigator.clipboard.writeText(body);byId('copyResults').textContent='Скопировано';setTimeout(()=>byId('copyResults').textContent='Скопировать результат',1800)}catch(_e){byId('recommendation').textContent='Браузер не разрешил копирование. Можно сделать скриншот статусов проверок (без секретов).';}
+  });
+  window.addEventListener('load',()=>setTimeout(runChecks,180));
+})();
+</script>
+</body>
+</html>
