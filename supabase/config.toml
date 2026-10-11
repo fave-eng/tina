@@ -1,4 +1,2 @@
-[functions.kristina-oge-reports]
-# HTTP-вызов по расписанию без пользовательского JWT;
-# в функции ОБЯЗАТЕЛЬНО проверяется независимый X-Report-Secret.
-verify_jwt = false
+[functions.kristina-oge-alerts]
+verify_jwt = false # Only because index.ts independently validates X-Report-Secret.
