@@ -3,7 +3,7 @@ window.OGE_CONFIG = Object.freeze({
   goalDate: '2027-05-01',
   programStart: '2026-10-12',
   examYear: 2027,
-  cloud: { enabled: false, url: '', publishableKey: '' },
+  cloud: { enabled: true, url: 'https://zqzgarvmpqqqaobeicpc.supabase.co', publishableKey: 'sb_publishable_tLdpYQZSbjxOZGQpee_jMQ_lfOBYZxC' },
   telegram: { discussionUrl: 'https://t.me/c/4401673540/3', status: 'не подключено' },
   official: {
     documents: 'https://fipi.ru/oge/demoversii-specifikacii-kodifikatory',
