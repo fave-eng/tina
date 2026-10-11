@@ -71,3 +71,22 @@
 @media(max-width:700px){.lesson-word-grid{grid-template-columns:1fr}.lesson-subhead{align-items:flex-start}.lesson-word .word-actions{flex-wrap:wrap}}
 
 .lesson-grammar-review{border:1px solid #e8e6fa;border-radius:14px;padding:13px 16px;margin:14px 0;background:#fcfbff}.lesson-grammar-review summary{font-weight:700;color:#5146a6;cursor:pointer;line-height:1.6}.lesson-grammar-review[open] summary{margin-bottom:15px}.lesson-grammar-review .grammar-lesson-full{margin-bottom:8px}
+
+/* v12 Reading: accessible word highlights, glossaries, two-column reader */
+.reading-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr);align-items:start;gap:18px}
+.reading-layout>*{min-width:0}.reading-layout .study-material{margin-bottom:18px}
+.reading-passage{font-size:16px;line-height:2.15;color:#29334d;padding:15px 0 19px;white-space:pre-wrap;overflow-wrap:anywhere}
+.reading-highlight{font:inherit;line-height:inherit;letter-spacing:inherit;padding:0 2px;border:0;border-bottom:2px dotted #8579dc;background:#f1edff;color:#39309a;border-radius:3px;cursor:pointer}
+.reading-highlight:focus-visible{outline:3px solid #675ed3}.reading-highlight:hover{background:#e4dcff}
+.reading-word-card{display:flex;gap:10px;justify-content:space-between;align-items:flex-start;padding:13px 0;border-bottom:1px solid #eceaf7}
+.reading-word-label{min-width:0}.reading-word-label strong{font-size:14px;display:block;color:#282444}.reading-word-label span{display:block;font-size:12px;color:#5757a2;margin-top:3px}.reading-word-label small{display:block;font-size:12px;color:#5c647a;margin-top:4px}
+.reading-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px}.reading-actions .mini-btn{font-size:11px;padding:6px 9px}.reading-actions svg{width:14px;height:14px}
+.reading-known{background:#e0f4e8!important;color:#245d3c!important}.reading-hard{background:#fff0df!important;color:#85501b!important}
+.reading-dictionary{position:sticky;top:16px}.reading-select-wrap{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;align-items:center;margin-top:10px}.reading-select-wrap label{font-size:12px}
+.reading-select-wrap select{min-width:0;width:100%;max-width:100%}.reading-match-question{padding:16px 0;border-bottom:1px solid #eceaf7}.reading-match-question p{line-height:1.85;font-size:14px}
+.reading-index .week-card{text-decoration:none!important;display:block}.reading-index .week-card p{min-height:38px}.reading-popover{position:fixed;z-index:999;inset:0;background:rgba(25,24,40,.18);display:flex;align-items:flex-end;justify-content:center;padding:16px}
+.reading-popup-content{position:relative;width:min(100%,410px);padding:24px;background:white;box-shadow:0 6px 40px #23205f35;border-radius:18px}.reading-popup-content h3{font-size:22px;color:#302f67}.reading-popup-content p{font-size:15px;margin:7px 0}.reading-popup-content strong{font-size:15px}.reading-popup-close{position:absolute;right:12px;top:12px;font-size:22px}
+@media (max-width:900px){.reading-layout{grid-template-columns:1fr}.reading-dictionary{position:static}}
+@media (max-width:550px){.reading-select-wrap{grid-template-columns:1fr;gap:4px}.reading-passage{font-size:15px;line-height:2.05}.reading-word-card{flex-wrap:wrap}.reading-actions{justify-content:flex-start}.reading-popup-content{padding:20px}}
+
+.reading-weak-row{display:flex;align-items:center;flex-wrap:wrap;gap:9px;border-bottom:1px solid #eceaf7;padding:11px 0}.reading-weak-row strong{flex:1;min-width:170px}.reading-weak-row span{font-size:12px;color:#8c5441}

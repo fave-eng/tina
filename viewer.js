@@ -33,6 +33,10 @@ function renderReport(s,updated){
  const weeks=Object.entries(s.weekStudyDays||{}).sort((a,b)=>a[0].localeCompare(b[0]));
  const doneWeeks=weeks.filter(([week,days])=>[0,1,2].every(i=>s.sessions?.[week+'-s'+i]?.passed)&&(days?.length||0)>=3).length;
  $('#weeks').innerHTML=`<h2>Недельный план</h2><p>Полностью выполнено ${doneWeeks} из 29 недель</p><div class="progress"><span style="width:${Math.min(100,100*doneWeeks/29)}%"></span></div>${weeks.length?weeks.slice(-8).reverse().map(([week,days])=>row('Неделя '+(week.startsWith('w')?Number(week.slice(1))+1:week),(days?.length||0)+'/3 учебных дня')).join(''):'<p>Учебных дней пока нет</p>'}`;
+ const readReviews=Object.values(s.readingReviews||{}).filter(x=>x&&!x.cleared&&Number.isFinite(Number(x.total))),readChapters=Object.values(s.readingChapters||{}).filter(x=>x?.done);
+ const readTotal=readReviews.reduce((n,x)=>n+(x.total||0),0),readCorrect=readReviews.reduce((n,x)=>n+(x.correct||0),0);
+ const readingLatest=Object.entries(s.readingReviews||{}).filter(([id,x])=>x&&!x.cleared&&id.startsWith('w')).sort((a,b)=>Number(b[0].slice(1))-Number(a[0].slice(1))).slice(0,8);
+ $('#readingProgress').innerHTML=`<h2>Чтение и книга</h2><p>Статистика дополнительного самостоятельного чтения. Не заменяет три обязательных занятия в неделю.</p>${row('Тематические статьи',readReviews.length+'/29')}${row('Прочитано глав The Saturday Project',readChapters.length+'/29')}${row('Понимание текста',readTotal?readCorrect+'/'+readTotal+' · '+percent(readCorrect,readTotal)+'%':'пока нет ответов')}${readingLatest.map(([id,x])=>row('Неделя '+(Number(id.slice(1))+1),(x.correct||0)+'/'+(x.total||3)+' ответов')).join('')}`;
  const events=(s.events||[]).filter(x=>x?.date).slice().sort((a,b)=>b.date.localeCompare(a.date));
  const latest=events.slice(0,300),byDomain=new Map(),badTopics=new Map();
  latest.forEach(e=>{(e.items||[]).forEach(item=>{const name=item.domain||'Другое';const k=byDomain.get(name)||{right:0,total:0};k.total++;if(item.correct)k.right++;else{const topic=item.topic||e.topic||'Без темы';badTopics.set(topic,(badTopics.get(topic)||0)+1)}byDomain.set(name,k)})});
