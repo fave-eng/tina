@@ -4,10 +4,23 @@
 (()=>{'use strict';
 const c=window.OGE_CONFIG?.cloud||{};
 const enabled=Boolean(c.enabled&&/^https:\/\/[^/]+\.supabase\.co\/?$/.test(c.url||'')&&c.publishableKey);
-let client=null,user=null,busy=false,errorText='',syncedAt='',syncTimer=null,pending=false,viewerCode='',verifiedDiagnosticAt='';
+let client=null,user=null,busy=false,errorText='',syncedAt='',syncTimer=null,pending=false,viewerCode='',verifiedDiagnosticAt='',lastVisitSync=0;
 const status=()=>({enabled,connected:!!user,busy,email:user?.email||'',error:errorText,syncedAt,viewerCode,verifiedDiagnosticAt});
 const emit=()=>window.dispatchEvent(new Event('oge-cloud-status'));
 const bridge=()=>window.OGE_STATE_BRIDGE;
+// Посещение фиксируется отдельным защищённым RPC только для авторизованного ученика.
+// Открытие сайта не засчитывается как учебная работа.
+async function markVisit(){
+  if(!client||!user||busy||document.visibilityState==='hidden')return false;
+  if(Date.now()-lastVisitSync<55*60*1000)return true;
+  try{
+    const {data,error}=await client.rpc('oge_mark_visit');
+    if(error)throw error;
+    if(data)lastVisitSync=Date.now();
+    return !!data;
+  }catch(e){console.warn('Не удалось отметить посещение в облаке:',e?.message||e);return false}
+}
+
 function loadSdk(){return new Promise((resolve,reject)=>{
   if(window.supabase?.createClient)return resolve();
   const script=document.createElement('script');
@@ -40,7 +53,7 @@ async function signIn(email,password,register=false){
     return 'Если требуется подтверждение почты, проверь письмо и войди в кабинет.';
   }finally{busy=false;emit();if(user)setTimeout(sync,0)}
 }
-async function signOut(){if(!client)return;const {error}=await client.auth.signOut();if(error)throw error;user=null;syncedAt='';viewerCode='';emit()}
+async function signOut(){if(!client)return;const {error}=await client.auth.signOut();if(error)throw error;user=null;syncedAt='';viewerCode='';lastVisitSync=0;emit()}
 async function sync(){
   if(!client||!user||!bridge())return;
   if(busy){pending=true;return}
@@ -81,10 +94,12 @@ async function sync(){
     verifiedDiagnosticAt=confirmed.snapshot.diagnostic?.finishedAt||'';
     errorText='';syncedAt=confirmed.updated_at||new Date().toISOString();emit();return true;
   }catch(e){errorText='Синхронизация не выполнена: '+(e?.message||'ошибка сети');emit();return false}
-  finally{busy=false;emit();if(pending){pending=false;schedule()}}
+  finally{busy=false;emit();if(user&&!errorText)setTimeout(markVisit,0);if(pending){pending=false;schedule()}}
 }
 function schedule(){if(!enabled||!user)return;clearTimeout(syncTimer);syncTimer=setTimeout(sync,1500)}
 window.addEventListener('oge-progress-saved',schedule);
+window.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')markVisit()});
+setInterval(()=>{if(document.visibilityState==='visible')markVisit()},20*60*1000);
 async function claimStagedProgress(code){
   if(!client||!user)throw Error('Сначала войди в свой аккаунт');
   const cleaned=String(code||'').trim().toLowerCase();
@@ -109,7 +124,30 @@ async function revokeViewers(){
  const {data,error}=await client.rpc('oge_revoke_viewers');
  if(error)throw error;viewerCode='';emit();return data;
 }
-window.OGE_CLOUD={status,signIn,signOut,sync,init,createViewerCode,revokeViewers,claimStagedProgress};
+async function journalList(){
+ if(!client||!user)throw Error('Сначала войди в аккаунт Кристины');
+ const {data,error}=await client.from('oge_journal_entries').select('entry_date,body,sentence_count,submitted_at,ai_feedback,updated_at')
+ .eq('user_id',user.id).order('entry_date',{ascending:false}).limit(45);
+ if(error)throw error;return data||[];
+}
+async function journalSave(text,submit=false){
+ if(!client||!user)throw Error('Сначала войди в аккаунт Кристины');
+ const {data,error}=await client.rpc('oge_save_diary',{p_body:text,p_submit:!!submit});
+ if(error)throw error;return data;
+}
+async function journalReview(){
+ if(!client||!user)throw Error('Сначала войди в аккаунт Кристины');
+ const {data,error}=await client.functions.invoke('kristina-oge-diary-review',{body:{review_today:true}});
+ if(error)throw Error(data?.error||error.message||'Ошибка связи с функцией проверки');
+ if(data?.error)throw Error(data.error);return data?.review;
+}
+async function journalTelegramTest(){
+ if(!client||!user)throw Error('Сначала войди в аккаунт Кристины');
+ const {data,error}=await client.functions.invoke('kristina-oge-diary-reminder',{body:{mode:'test'}});
+ if(error)throw Error(data?.error||error.message||'Функция Telegram ещё не активирована');
+ if(data?.error)throw Error(data.error);return data;
+}
+window.OGE_CLOUD={status,signIn,signOut,sync,init,createViewerCode,revokeViewers,claimStagedProgress,journalList,journalSave,journalReview,journalTelegramTest};
 // Из-за defer загрузка библиотеки завершается после app.js, где появляется bridge.
 init();
 })();
