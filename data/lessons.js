@@ -88,22 +88,78 @@ window.OGE_LESSONS = (() => {
     ['Опиши обычный школьный день и любимые предметы.','Объясни, что тебе нравится и что ты хотела бы изменить в школе.','Ответь другу, какие предметы ты изучаешь и как готовишься к тестам.']
   ];
   const sessions = [
-    {name:'Занятие 1 · Грамматика',short:'Разобрать правило и применить его',kind:'grammar',minutes:'50–60',hint:'Рекомендуется в начале недели',minWords:25},
-    {name:'Занятие 2 · Словарь и чтение',short:'Выучить слова, прочитать текст, найти доказательства',kind:'reading',minutes:'45–60',hint:'Через 1–2 дня',minWords:30},
-    {name:'Занятие 3 · Экзаменационная практика',short:'Проверить материал, потренировать аудирование и письмо',kind:'exam',minutes:'50–65',hint:'В конце недели',minWords:40}
+    {name:'Занятие 1 · Грамматика',short:'Разобрать правило и применить его',kind:'grammar',minutes:'65–80',hint:'Теория, 6 форматов практики, контроль, письмо',minWords:45},
+    {name:'Занятие 2 · Словарь и чтение',short:'Выучить слова, прочитать текст, найти доказательства',kind:'reading',minutes:'55–70',hint:'Лексика, чтение и задания на смысл',minWords:35},
+    {name:'Занятие 3 · Экзаменационная практика',short:'Проверить материал, потренировать аудирование и письмо',kind:'exam',minutes:'60–75',hint:'Экзаменационная тренировка и двухнедельное повторение',minWords:45}
   ];
   function vocabTopic(index){const w=P.weeks[index];const v=P.vocabulary.find(x=>x.title.toLowerCase()===w.vocab.toLowerCase()||x.title.toLowerCase().includes(w.vocab.toLowerCase()));return v||P.vocabulary[(index===7?0:index)%P.vocabulary.length];}
   function reading(index){return passages[index%passages.length];}
   function listen(index){return listens[index%listens.length];}
+  // v16: focused questions first, and only a few earlier-topic review questions.
+  // Never introduce grammar from future weeks before it has been explained.
+  const focusedGrammar = {
+    0:[
+      ['My aunt ___ a nurse.','is',['is','are','am','have'],'One person (she) → is.'],
+      ['They ___ got a new puppy.','have',['have','has','are','do'],'They have got; has got is for he/she/it.'],
+      ['There ___ a desk next to the window.','is',['is','are','have','do'],'There is + singular noun.'],
+      ['___ there any books on the shelf?','Are',['Are','Is','Has','Does'],'Are there + plural books.'],
+      ['He ___ got two sisters.','has',['has','have','is','does'],'He has got, not he have got.'],
+      ['My classmates ___ late today.','aren’t',['aren’t','isn’t','haven’t','doesn’t'],'They / classmates are → aren’t.']
+    ],
+    1:[
+      ['___ does your brother get up?','When',['When','Does','Do','Is'],'Special question word + does + subject + V1.'],
+      ['___ plays the piano in your family?','Who',['Who','Does','Do','Whose'],'Who is the subject of the question; does is unnecessary.'],
+      ['___ your friend like science?','Does',['Does','Do','Are','Has'],'Does + he/she/it + base verb.'],
+      ['Where ___ your parents live?','do',['do','does','are','is'],'Plural subject parents → do.']
+    ],
+    2:[
+      ['Mia always ___ her homework after dinner.','does',['does','do','is doing','did'],'Habit with she → does.'],
+      ['I ___ usually get up before seven.','don’t',['don’t','doesn’t','am not','didn’t'],'Present Simple negative with I: don’t + V1.'],
+      ['How often ___ your classmates play sports?','do',['do','does','are','have'],'Classmates = plural subject; do.'],
+      ['Our teacher ___ English every day.','teaches',['teaches','teach','teaching','is teach'],'He/she/it + -es: teach → teaches.'],
+      ['He ___ TV in the morning. (not watch)','doesn’t watch',['doesn’t watch','don’t watches','isn’t watch','doesn’t watches'],'Doesn’t + base form.'],
+      ['She ___ three times a week. (study)','studies',['studies','study','studys','is studying'],'Regular action, consonant + y → -ies.']
+    ],
+    3:[
+      ['Look! They ___ outside.','are playing',['are playing','play','plays','played'],'Look! = action now → are + -ing.'],
+      ['She ___ an email at the moment.','is writing',['is writing','writes','write','is write'],'At the moment → is writing, silent e disappears.'],
+      ['I ___ breakfast right now.','am having',['am having','have','has','am have'],'Having breakfast is an action now.'],
+      ['These days he ___ for his exams.','is studying',['is studying','studies','study','studied'],'Temporary current situation: is studying.'],
+      ['They ___ now. (not sleep)','aren’t sleeping',['aren’t sleeping','don’t sleeping','isn’t sleeping','not sleep'],'Negative Present Continuous: are not + -ing.'],
+      ['I ___ this explanation.','understand',['understand','am understanding','understands','understood'],'Understand is usually a stative verb.']
+    ],
+    4:[
+      ['She ___ to the cinema last night.','went',['went','go','gone','goes'],'Last night → Past Simple (go → went).'],
+      ['They ___ the museum yesterday.','visited',['visited','visit','visiting','have visited'],'Yesterday → finished past action.'],
+      ['___ you see the film last week?','Did',['Did','Do','Have','Are'],'Past Simple question uses Did + base verb.'],
+      ['My sister ___ the answer. (not know, yesterday)','didn’t know',['didn’t know','didn’t knew','doesn’t know','not knew'],'Didn’t + V1, not knew.'],
+      ['He ___ his keys three days ago.','lost',['lost','lose','has lost','loses'],'Ago gives a finished past time.']
+    ],
+    5:[
+      ['I ___ dinner when you called.','was cooking',['was cooking','cooked','cook','am cooking'],'Ongoing background: was cooking.'],
+      ['They ___ when the bus arrived.','were waiting',['were waiting','was waiting','waited','are waiting'],'They were + -ing in the past.'],
+      ['While the baby was sleeping, the phone ___.','rang',['rang','was ringing','rings','has rung'],'Short past event, ring → rang.'],
+      ['At 6 yesterday, my parents ___ home.','were driving',['were driving','was driving','drove','drive'],'At a specified past moment, action in progress.'],
+      ['He ___ while I was reading. (arrive)','arrived',['arrived','was arriving','arrives','has arrived'],'One event against a continuous background.']
+    ],
+    6:[
+      ['I ___ already finished my project.','have',['have','has','did','am'],'I have + V3.'],
+      ['She has ___ her keys.','lost',['lost','lose','losing','loses'],'Has + V3; current result.'],
+      ['Have you ___ been abroad?','ever',['ever','yesterday','last','ago'],'Ever for experience in Present Perfect.'],
+      ['They have lived here ___ 2019.','since',['since','for','during','from'],'Since + starting point.'],
+      ['I have known her ___ five years.','for',['for','since','ago','during'],'For + length of time.']
+    ]
+  };
   function grammarQuestions(index,count){
-    const ranges=[[0,8],[0,8],[4,9],[8,12],[12,16],[11,17],[16,21],[0,23],[21,25],[24,27],[27,30],[27,30],[29,32],[0,38],[31,34],[33,35],[34,36],[35,38],[37,40],[10,46],[40,44],[44,48],[40,48],[8,48],[12,36],[0,38],[0,48],[0,48],[0,48]];
+    const ranges=[[0,4],[0,8],[4,8],[8,11],[12,15],[11,16],[16,20],[0,20],[21,24],[24,27],[27,29],[27,30],[29,32],[0,32],[31,34],[33,35],[34,36],[35,38],[37,40],[10,40],[40,44],[44,47],[44,48],[8,48],[12,48],[0,48],[0,48],[0,48],[0,grammarBank.length]];
     const [start,end]=ranges[index]||[0,grammarBank.length];
-    const priority=Array.from({length:end-start},(_,j)=>start+(j+index)%(end-start));
-    const reviewLimit=Math.max(end,Math.min(grammarBank.length,14+index*2));
-    const review=Array.from({length:reviewLimit},(_,j)=>(index*11+j*7)%reviewLimit);
-    const extra=Array.from({length:grammarBank.length},(_,j)=>(index*11+j*7)%grammarBank.length);
-    const chosen=[...new Set([...priority,...review,...extra])].slice(0,count);
-    return chosen.map((n,k)=>{const q=grammarBank[n];return {id:'g'+index+'-'+k,question:q[0],answer:q[1],options:q[2],explain:q[3]};});
+    const indices=Array.from({length:end-start},(_,j)=>start+((j+index)%(end-start)));
+    const base=indices.map(n=>grammarBank[n]);
+    const extra=focusedGrammar[index]||[];
+    // Fill any remaining places with ONLY previously covered material, never future grammar.
+    const earlier=[];for(let n=0;n<start;n++)earlier.push(grammarBank[(n+index)%start]);
+    const pool=[...base,...extra,...earlier];
+    return pool.slice(0,count).map((q,k)=>({id:'g16-'+index+'-'+k,question:q[0],answer:q[1],options:q[2],explain:q[3]}));
   }
   function vocabularyQuestions(index,count){
     let words=vocabTopic(index).words.filter(x=>x.en?.trim()&&x.ru?.trim());const pool=P.vocabulary.flatMap(t=>t.words).filter(w=>w.ru?.trim());let arr=[];
