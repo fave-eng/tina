@@ -60,8 +60,9 @@ async function sync(){
       }
     }catch(_e){/* localStorage may be blocked; the explicit JSON export remains essential */}
     const merged=bridge().merge(localBefore,remote?.snapshot||null);
-    bridge().apply(merged); // обновляем кабинет без повторного события синхронизации
-    const {error:writeError}=await client.from('oge_student_state').upsert({user_id:user.id,snapshot:bridge().read(),updated_at:new Date().toISOString()},{onConflict:'user_id'});
+    bridge().apply(merged); // при вводе текста поле не перерисовывается
+    const uploadSnapshot=bridge().read();
+    const {error:writeError}=await client.from('oge_student_state').upsert({user_id:user.id,snapshot:uploadSnapshot,updated_at:new Date().toISOString()},{onConflict:'user_id'});
     if(writeError)throw writeError;
     const events=bridge().read().events||[];
     for(let i=0;i<events.length;i+=100){
