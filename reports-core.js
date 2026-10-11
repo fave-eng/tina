@@ -36,7 +36,7 @@
       types[event.type]=(types[event.type]||0)+1;
       if(event.type==='diagnostic' && Number.isFinite(event.score))diagnosticScores.push(event.score);
       if(event.type==='lesson'){
-        attempts++;days.add(localDateKey(event.date));
+        if(event.source!=='writing-completion') attempts++;days.add(localDateKey(event.date));
         if(event.passed){passes++;passedDays.add(localDateKey(event.date));sessions.add(event.week+'-'+event.session);if(event.topic)learned.add(event.topic)}
       }
       if(event.type==='vocab' && event.status==='known' && event.word) vocabMarked.add(event.word);
