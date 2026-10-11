@@ -1,3 +1,4 @@
 [functions.kristina-oge-reports]
-# Доступ не публичный: функция сама проверяет секрет REPORT_CRON_SECRET.
+# HTTP-вызов по расписанию без пользовательского JWT;
+# в функции ОБЯЗАТЕЛЬНО проверяется независимый X-Report-Secret.
 verify_jwt = false
