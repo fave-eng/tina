@@ -4,8 +4,8 @@
 (()=>{'use strict';
 const c=window.OGE_CONFIG?.cloud||{};
 const enabled=Boolean(c.enabled&&/^https:\/\/[^/]+\.supabase\.co\/?$/.test(c.url||'')&&c.publishableKey);
-let client=null,user=null,busy=false,errorText='',syncedAt='',syncTimer=null,pending=false,viewerCode='';
-const status=()=>({enabled,connected:!!user,busy,email:user?.email||'',error:errorText,syncedAt,viewerCode});
+let client=null,user=null,busy=false,errorText='',syncedAt='',syncTimer=null,pending=false,viewerCode='',verifiedDiagnosticAt='';
+const status=()=>({enabled,connected:!!user,busy,email:user?.email||'',error:errorText,syncedAt,viewerCode,verifiedDiagnosticAt});
 const emit=()=>window.dispatchEvent(new Event('oge-cloud-status'));
 const bridge=()=>window.OGE_STATE_BRIDGE;
 function loadSdk(){return new Promise((resolve,reject)=>{
@@ -75,14 +75,26 @@ async function sync(){
     if(confirmError)throw confirmError;
     if(!confirmed?.snapshot || confirmed.snapshot.studentId!==window.OGE_CONFIG.student.id)
       throw Error('Облачная запись не подтверждена');
-    if(!confirmed.snapshot.diagnostic?.finishedAt && merged.diagnostic?.finishedAt)
-      throw Error('Результат диагностики отсутствует в облачной копии');
-    errorText='';syncedAt=confirmed.updated_at||new Date().toISOString();emit();
-  }catch(e){errorText='Синхронизация не выполнена: '+(e?.message||'ошибка сети');emit()}
+    if(merged.diagnostic?.finishedAt && (confirmed.snapshot.diagnostic?.finishedAt!==merged.diagnostic.finishedAt || JSON.stringify(confirmed.snapshot.diagnostic?.result)!==JSON.stringify(merged.diagnostic.result)))
+      throw Error('Результат диагностики в облаке не совпадает с результатом на сайте');
+    verifiedDiagnosticAt=confirmed.snapshot.diagnostic?.finishedAt||'';
+    errorText='';syncedAt=confirmed.updated_at||new Date().toISOString();emit();return true;
+  }catch(e){errorText='Синхронизация не выполнена: '+(e?.message||'ошибка сети');emit();return false}
   finally{busy=false;emit();if(pending){pending=false;schedule()}}
 }
 function schedule(){if(!enabled||!user)return;clearTimeout(syncTimer);syncTimer=setTimeout(sync,1500)}
 window.addEventListener('oge-progress-saved',schedule);
+async function claimStagedProgress(code){
+  if(!client||!user)throw Error('Сначала войди в свой аккаунт');
+  const cleaned=String(code||'').trim().toLowerCase();
+  if(!/^[0-9a-f]{40}$/.test(cleaned))throw Error('Код переноса должен содержать 40 символов');
+  // Одноразовый код проверяется и погашается на сервере; он НЕ хранится в файлах сайта.
+  const {data,error}=await client.rpc('oge_claim_staged_progress',{p_code:cleaned});
+  if(error)throw error;
+  const ok=await sync();
+  if(!ok)throw Error('Копия привязана к аккаунту, но синхронизация не подтверждена. Нажми «Синхронизировать» ещё раз.');
+  return data;
+}
 async function createViewerCode(){
  if(!client||!user)throw Error('Сначала войди в аккаунт Кристины');
  await sync();
@@ -96,7 +108,7 @@ async function revokeViewers(){
  const {data,error}=await client.rpc('oge_revoke_viewers');
  if(error)throw error;viewerCode='';emit();return data;
 }
-window.OGE_CLOUD={status,signIn,signOut,sync,init,createViewerCode,revokeViewers};
+window.OGE_CLOUD={status,signIn,signOut,sync,init,createViewerCode,revokeViewers,claimStagedProgress};
 // Из-за defer загрузка библиотеки завершается после app.js, где появляется bridge.
 init();
 })();
