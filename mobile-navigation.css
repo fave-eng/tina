@@ -1,0 +1,28 @@
+/* OGE 2027 v21. Navigation parity on desktop and mobile. */
+[hidden]{display:none!important}
+@media (max-width:900px){
+  .mobile-nav{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;z-index:110!important}
+  .mobile-nav a,.mobile-nav .oge-mobile-more-button{appearance:none;min-width:0;display:grid;align-content:center;justify-items:center;gap:4px;min-height:56px;padding:7px 1px;border:0;border-radius:12px;text-align:center;letter-spacing:0;color:#87849d;background:transparent;font:inherit;font-size:10px;font-weight:800;line-height:1.2;text-decoration:none;cursor:pointer}
+  .mobile-nav a svg,.mobile-nav .oge-mobile-more-button svg{width:23px;height:23px;display:block}
+  .mobile-nav a.active,.mobile-nav .oge-mobile-more-button.active{background:#eeebff;color:#5346c8}
+  .mobile-nav .oge-mobile-more-button:focus-visible,.mobile-nav a:focus-visible,.oge-mobile-all-links a:focus-visible,.oge-mobile-menu-close:focus-visible{outline:3px solid #756ae6;outline-offset:2px}
+  .oge-mobile-mask{position:fixed;inset:0;background:rgba(13,18,37,.45);z-index:111}
+  .oge-mobile-full-menu{position:fixed;left:12px;right:12px;bottom:calc(75px + env(safe-area-inset-bottom));max-height:min(70dvh,620px);overflow-y:auto;overscroll-behavior:contain;z-index:112;padding:16px;background:#fff;border:1px solid #e5e6ee;border-radius:23px;box-shadow:0 16px 48px rgba(10,20,44,.24)}
+  .oge-mobile-menu-header{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:0 1px 14px}
+  .oge-mobile-menu-header strong{font-weight:850;font-size:19px;color:#1f2337}
+  .oge-mobile-menu-close{border:1px solid #e2e3ef;background:#f6f5fb;color:#51496e;padding:9px 12px;border-radius:12px;font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+  .oge-mobile-all-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .oge-mobile-all-links a{display:flex;align-items:center;min-width:0;gap:10px;background:#f7f8fc;border:1px solid #e6e8f0;border-radius:13px;padding:12px 10px;color:#3a3a50;text-decoration:none;font-size:12px;font-weight:800;line-height:1.2}
+  .oge-mobile-all-links a svg{flex:none;width:21px;height:21px;color:#6256cb}
+  .oge-mobile-all-links a.active{background:#efebff;border-color:#bdb5ff;color:#4c40bf}
+  .oge-mobile-menu-open{overflow:hidden}
+  .oge-diary-home-link{display:flex;align-items:center;gap:13px;margin-top:17px;margin-bottom:20px;padding:17px 18px;min-height:90px;border-radius:18px;background:#fff;border:1px solid #c8c1ff;box-shadow:0 5px 16px rgba(69,58,160,.07);color:#1f2340;text-decoration:none}
+  .oge-diary-home-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;background:#eeeaff;color:#5648c9;border-radius:12px}
+  .oge-diary-home-icon svg{width:25px;height:25px}
+  .oge-diary-home-copy{display:grid;gap:5px;min-width:0;flex:1}
+  .oge-diary-home-copy strong{font-size:15px}
+  .oge-diary-home-copy small{font-size:12px;line-height:1.5;color:#68718a}
+  .oge-diary-home-arrow{color:#6256cb;font-size:21px}
+}
+@media (min-width:901px){.oge-mobile-mask,.oge-mobile-full-menu,.oge-diary-home-link{display:none!important}}
+@media (max-width:375px){.oge-mobile-all-links{grid-template-columns:1fr}.oge-mobile-full-menu{bottom:calc(71px + env(safe-area-inset-bottom))}}
