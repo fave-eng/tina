@@ -1,0 +1,41 @@
+/* ОГЭ-2027 · самостоятельные грамматические главы: пять смысловых моделей */
+.gr18 .gm30{display:block;color:#24334d;line-height:1.68;font-size:15px;margin:0 0 28px;overflow-wrap:anywhere}
+.gr18 .gm30 .gm30-hero{padding:22px 25px;border-radius:22px;border:1px solid #d7e3ef;margin-bottom:16px;background:#eef6ff}
+.gr18 .gm30-habit .gm30-hero{background:#f1f8f2;border-color:#cfe8d2}
+.gr18 .gm30-camera .gm30-hero{background:#eff7ff;border-color:#cbdff2}
+.gr18 .gm30-contrast .gm30-hero{background:#f7f3ff;border-color:#e1d3f6}
+.gr18 .gm30-past .gm30-hero{background:#fff8ef;border-color:#f4dfc3}
+.gr18 .gm30-perfect .gm30-hero{background:#eef8f5;border-color:#cce8dc}
+.gr18 .gm30 .gm30-hero small{display:block;text-transform:uppercase;letter-spacing:.07em;font-size:11px;font-weight:750;color:#49637e;margin-bottom:8px}
+.gr18 .gm30 .gm30-hero h2{color:#15243d;line-height:1.2;font-size:clamp(22px,3vw,30px);margin:0 0 11px}
+.gr18 .gm30 p{margin:7px 0 13px}
+.gr18 .gm30 .gm30-section{padding:18px 22px;border:1px solid #dfe6f0;border-radius:20px;background:white;margin-bottom:14px}
+.gr18 .gm30 .gm30-section h3{font-size:19px;color:#273c5b;margin:0 0 13px}
+.gr18 .gm30 .gm30-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:13px 0}
+.gr18 .gm30 .gm30-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gr18 .gm30 .gm30-columns>div,.gr18 .gm30 .gm30-columns>span{padding:14px 14px;border:1px solid #dce4ef;border-radius:14px;background:#f7faff;min-width:0}
+.gr18 .gm30 .gm30-columns>div>strong{color:#1d5683}
+.gr18 .gm30 .gm30-columns p{font-size:14px}
+.gr18 .gm30 .gm30-table{max-width:100%;overflow-x:auto;overflow-y:hidden;margin:12px 0;-webkit-overflow-scrolling:touch}
+.gr18 .gm30 table{width:100%;border-collapse:separate;border-spacing:0;min-width:430px;font-size:13px}
+.gr18 .gm30 td,.gr18 .gm30 th{border-bottom:1px solid #e1e7f0;padding:10px;text-align:left;vertical-align:top;overflow-wrap:normal}
+.gr18 .gm30 th{background:#f1f5fb;color:#233b57;font-weight:750}
+.gr18 .gm30 .gm30-equation{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:14px 0}
+.gr18 .gm30 .gm30-equation span{display:inline-block;border-radius:10px;padding:8px 12px;background:#edf1ff;color:#27378c;font-weight:750}
+.gr18 .gm30 .gm30-timeline{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:3px solid #d5e3ef;padding:12px 4px 20px;flex-wrap:wrap}
+.gr18 .gm30 .gm30-timeline span{font-size:12px;font-weight:750}
+.gr18 .gm30 .gm30-dot{color:#146c86!important;background:#dcf3f4;border-radius:9px;padding:8px}
+.gr18 .gm30 .gm30-scale{display:flex;gap:5px;flex-wrap:wrap}
+.gr18 .gm30 .gm30-scale span{display:block;background:#e6f4e7;border:1px solid #c6e3c9;padding:5px 9px;border-radius:9px;font-size:12px}
+.gr18 .gm30 .gm30-flow{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:10px 0}
+.gr18 .gm30 .gm30-flow>div:not(.gm30-columns){background:#eff2ff;border-radius:11px;padding:9px 14px}
+.gr18 .gm30 .gm30-flow .gm30-columns{width:100%;margin:0}
+.gr18 .gm30 .gm30-flow small{display:block;margin-top:7px}
+.gr18 .gm30 .gm30-hint{background:#ecf6fb;border-left:4px solid #307eb8;padding:12px 14px}
+.gr18 .gm30 .gm30-errors{border-left:4px solid #bf6e4e;padding-left:14px;background:#fff8f4}
+.gr18 .gm30 .gm30-errors p{display:grid;gap:4px}
+.gr18 .gm30 .gm30-errors s{color:#ab3f3f}.gr18 .gm30 .gm30-errors b{color:#1a6949}
+.gr18 .gm30 ol{padding-left:23px}
+.gr18 .gm30 li{margin-bottom:8px}
+.gr18 .gm30 .gm30-section:target{outline:3px solid #a9caef}
+@media(max-width:680px){.gr18 .gm30 .gm30-columns,.gr18 .gm30 .gm30-two{grid-template-columns:1fr}.gr18 .gm30 .gm30-section{padding:15px 13px}.gr18 .gm30 .gm30-hero{padding:19px 15px}.gr18 .gm30 .gm30-timeline{align-items:stretch}.gr18 .gm30 .gm30-table{margin:8px -3px}}
