@@ -1,9 +1,11 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
+const {stripTypeScriptTypes}=require('node:module');
 let src=fs.readFileSync(__dirname+'/../supabase/functions/kristina-oge-alerts/index.ts','utf8');
 src=src.substring(src.indexOf('const OFFSET'),src.indexOf('async function telegram')).replace('export function buildAlerts','function buildAlerts');
 const box={Date,Set,Map,Array,Object,Math,Number,parseInt};
+src=stripTypeScriptTypes(src,{mode:'strip'});
 vm.createContext(box);vm.runInContext(src+'\nthis.buildAlerts=buildAlerts;',box);
 const test=(name,presence,now,snapshot)=>{let a=box.buildAlerts(snapshot,presence,new Date(now));return [...a]};
 const no={events:[],sessions:{},weekStudyDays:{}};

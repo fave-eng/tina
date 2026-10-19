@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
-const source=fs.readFileSync(__dirname+'/reports-core.js','utf8');
+const source=fs.readFileSync(__dirname+'/../reports-core.js','utf8');
 const ctx={console,Date,Intl,globalThis:null};ctx.globalThis=ctx;vm.runInNewContext(source,ctx);
 const core=ctx.OGE_REPORTS_CORE;
 const weekly=core.weeklyPeriod(new Date('2026-10-19T05:00:00.000Z'));

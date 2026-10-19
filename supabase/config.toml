@@ -1,2 +1,6 @@
 [functions.kristina-oge-alerts]
 verify_jwt = false # Only because index.ts independently validates X-Report-Secret.
+
+# Reports function uses the separate X-Report-Secret (not a public browser endpoint).
+[functions.kristina-oge-reports]
+verify_jwt = false
