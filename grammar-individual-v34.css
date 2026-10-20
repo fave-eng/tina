@@ -1,0 +1,33 @@
+/* ОГЭ-2027 · v34 · авторские схемы для четырёх тем будущего времени */
+.gm34{color:var(--text,#30334c);line-height:1.75;font-size:14px;max-width:100%;overflow-wrap:anywhere}
+.gm34 *{box-sizing:border-box}.gm34 .gm34-head{border:1px solid #dcdcf2;border-radius:18px;padding:clamp(17px,3.2vw,29px);background:linear-gradient(115deg,#f0efff 0%,#f8fbff 100%);margin-bottom:18px}
+.gm34 .gm34-overline{font-size:11px;font-weight:800;letter-spacing:.095em;color:#5149a1;display:block}
+.gm34 .gm34-head h2{font-size:clamp(21px,3.1vw,28px);line-height:1.29;color:#342e73;margin:12px 0}.gm34 .gm34-head p{margin:10px 0 0}
+.gm34 .gm34-panel{margin:14px 0;background:var(--card,#fff);padding:clamp(15px,3vw,23px);border:1px solid #e4e3ef;border-radius:16px;max-width:100%}
+.gm34 .gm34-panel h3{font-size:clamp(16px,2vw,20px);margin:0 0 12px;color:#3c3679;line-height:1.38}
+.gm34 .gm34-panel p{margin:10px 0}.gm34 .gm34-panel ol{margin:10px 0;padding-left:23px}.gm34 .gm34-panel li{padding-left:3px;margin:8px 0}
+.gm34 .gm34-scene,.gm34 .gm34-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:13px 0}
+.gm34 .gm34-scene>div,.gm34 .gm34-comparison>div{border-radius:13px;background:#f7f5ff;border:1px solid #e2e0f2;padding:15px;min-width:0}
+.gm34 .gm34-scene>div:nth-child(2),.gm34 .gm34-comparison>div:nth-child(2){background:#f3faf9;border-color:#dce9e5}
+.gm34 .gm34-comparison{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gm34 .gm34-scene span{display:block;font-size:11px;font-weight:800;letter-spacing:.05em;color:#5c549b}
+.gm34 .gm34-scene strong,.gm34 .gm34-comparison strong{display:block;color:#3d347e}
+.gm34 .gm34-tip{background:#f5f2ff;border-left:4px solid #877ad0;border-radius:10px;padding:13px 16px;margin:13px 0}
+.gm34 .gm34-scroll{overflow-x:auto;max-width:100%;border:1px solid #e5e2f1;border-radius:12px;margin:13px 0;overscroll-behavior-x:contain}
+.gm34 table{border-collapse:collapse;min-width:440px;width:100%;font-size:13px;line-height:1.58}
+.gm34 table th,.gm34 table td{text-align:left;vertical-align:top;padding:11px 13px;border-bottom:1px solid #e9e7f1}
+.gm34 table th{color:#473e83;background:#f0eefc;font-weight:800}.gm34 table tr:last-child td{border:0}
+.gm34 .gm34-wrong{display:grid;gap:4px;background:#fffaf7;border:1px solid #f0e0d9;padding:13px 15px;border-radius:12px;margin:10px 0}
+.gm34 .gm34-wrong s{color:#ad4b43}.gm34 .gm34-wrong strong{color:#247c65}.gm34 .gm34-wrong small{color:#66657c}
+.gm34 .gm34-board{display:grid;gap:6px;margin:15px 0;border-radius:12px;padding:11px;background:#232a42;color:#f0f7ff;font-variant-numeric:tabular-nums}
+.gm34 .gm34-board>div{display:grid;grid-template-columns:75px 1fr;gap:12px;align-items:center;padding:9px 12px;border-bottom:1px dashed #77819c}
+.gm34 .gm34-board>div:last-child{border:0}.gm34 .gm34-board b{color:#ffdc86;font-size:15px}.gm34 .gm34-board strong{color:#a8e4ca}
+.gm34 .gm34-timeflow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:16px 0}
+.gm34 .gm34-timeflow>span{flex:1;text-align:center;padding:11px;border-radius:10px;background:#f4f2ff;border:1px solid #dddaf4;font-weight:700;font-size:12px}
+.gm34 .gm34-timeflow>span:nth-child(even){flex:0;background:none;border:0;font-size:19px}
+.gm34 .gm34-clauses{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center;margin:15px 0}
+.gm34 .gm34-clauses>div{display:grid;gap:5px;border:1px solid #dedaf4;background:#f7f5ff;padding:15px;border-radius:12px;min-width:0}
+.gm34 .gm34-clauses>div:last-child{background:#f2faf7;border-color:#d9e9e4}
+.gm34 .gm34-clauses span{font-size:10px;letter-spacing:.05em;color:#5d5390;font-weight:800}
+.gm34 .gm34-clauses>b{color:#6455b4}.gm34 .gm34-clauses small{color:#575b75}
+@media(max-width:680px){.gm34 .gm34-scene,.gm34 .gm34-comparison{grid-template-columns:1fr}.gm34 .gm34-clauses{grid-template-columns:1fr;gap:6px}.gm34 .gm34-clauses>b{text-align:center}.gm34 .gm34-timeflow{gap:3px}.gm34 .gm34-timeflow>span{font-size:10px;padding:7px 5px}.gm34 .gm34-panel{padding:14px}.gm34 table{min-width:405px}.gm34 table td,.gm34 table th{padding:9px 10px}}
