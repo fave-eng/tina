@@ -1,0 +1,38 @@
+/* ОГЭ 2027 · v33: темы прошедших привычек и будущего времени. */
+.gm33{max-width:100%;overflow-wrap:break-word;font-size:14px;line-height:1.72;color:var(--text,#30324d)}
+.gm33 *{box-sizing:border-box}
+.gm33 .gm33-hero{padding:clamp(17px,3vw,27px);border-radius:18px;border:1px solid #dcdcf0;background:linear-gradient(125deg,#f0edff,#f9fbff);margin:0 0 18px}
+.gm33 .gm33-eyebrow{color:#5b569c;font-size:11px;text-transform:uppercase;letter-spacing:.065em;font-weight:800}
+.gm33 .gm33-hero h2{color:#302b63;font-size:clamp(22px,3vw,27px);margin:10px 0;line-height:1.32}
+.gm33 .gm33-hero p{margin:6px 0 0}
+.gm33 .gm33-panel{padding:clamp(15px,2.6vw,23px);background:#fff;border:1px solid #e3e5f1;border-radius:16px;margin:15px 0}
+.gm33 .gm33-panel h3{font-size:clamp(16px,2vw,20px);color:#37356f;line-height:1.35;margin:0 0 15px}
+.gm33 .gm33-panel p{margin:10px 0}
+.gm33 .gm33-panel ol{margin:12px 0 8px;padding-left:22px}
+.gm33 .gm33-panel li{margin:7px 0;padding-left:3px}
+.gm33 .gm33-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.gm33 .gm33-pair>div{border:1px solid #deddf1;background:#f8f7ff;border-radius:13px;padding:16px;min-width:0}
+.gm33 .gm33-pair>div:nth-child(2){border-color:#dae9e5;background:#f4faf9}
+.gm33 .gm33-pair small,.gm33 .gm33-scene>span{font-size:11px;letter-spacing:.05em;font-weight:800;color:#5a598d}
+.gm33 .gm33-note{border-left:4px solid #8a7ed2;background:#f5f3ff;border-radius:8px;padding:13px 16px}
+.gm33 .gm33-table{width:100%;overflow-x:auto;overscroll-behavior-x:contain;border-radius:11px;border:1px solid #e6e4f0;margin:12px 0}
+.gm33 .gm33-table table{min-width:440px;width:100%;border-collapse:collapse;line-height:1.55;font-size:13px}
+.gm33 .gm33-table th,.gm33 .gm33-table td{padding:11px 12px;border-bottom:1px solid #e9e7f1;vertical-align:top;text-align:left}
+.gm33 .gm33-table tr:last-child td{border:0}
+.gm33 .gm33-table th{background:#f0effc;color:#454177;font-weight:800}
+.gm33 .gm33-lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.gm33 .gm33-lanes>div{padding:13px;border:1px solid #e2e2ed;background:#f8f8fd;border-radius:12px;min-width:0}
+.gm33 .gm33-lanes strong,.gm33 .gm33-lanes span{display:block}
+.gm33 .gm33-lanes strong{color:#484188;line-height:1.45}
+.gm33 .gm33-lanes span{margin:6px 0;color:#71718a;font-size:12px}
+.gm33 .gm33-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gm33 .gm33-grid3>div{background:#f8f7ff;border:1px solid #e1def2;border-radius:12px;padding:15px;min-width:0}
+.gm33 .gm33-grid3 strong{display:block;color:#504687}
+.gm33 .gm33-grid3 small{color:#777386}
+.gm33 .gm33-scene{border-radius:13px;border-left:5px solid #8275c4;background:#f6f4ff;padding:16px 20px}
+.gm33 .gm33-scene p{margin:10px 0}
+.gm33 .gm33-warning{display:grid;gap:3px;background:#fffaf8;border:1px solid #f1e1d9;border-radius:12px;padding:12px 15px;margin:12px 0}
+.gm33 .gm33-warning s{color:#a3544b}
+.gm33 .gm33-warning b{color:#287b60}
+.gm33 .gm33-warning span{font-size:12px;color:#60647b}
+@media(max-width:700px){.gm33 .gm33-lanes,.gm33 .gm33-grid3{grid-template-columns:1fr}.gm33 .gm33-pair{grid-template-columns:1fr}.gm33 .gm33-table table{min-width:410px}.gm33 .gm33-table td,.gm33 .gm33-table th{padding:9px 10px}.gm33 .gm33-panel{margin:12px 0}}

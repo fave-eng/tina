@@ -1,0 +1,43 @@
+/* ОГЭ-2027 · авторские визуальные схемы прошедших времён, v32. */
+.gm32{font-size:15px;line-height:1.75;color:#37354b;overflow-wrap:anywhere;max-width:100%}
+.gm32 *{box-sizing:border-box}
+.gm32 .gm32-banner{border:1px solid #d7d8ee;border-radius:19px;background:linear-gradient(135deg,#eeefff,#f8fafc);padding:clamp(17px,4vw,28px);margin-bottom:18px}
+.gm32 .gm32-banner h2{margin:8px 0 10px;font-size:clamp(21px,3vw,29px);line-height:1.3;color:#302e63}
+.gm32 .gm32-banner p{margin:0}
+.gm32 .gm32-eyebrow{font-size:12px;letter-spacing:.04em;font-weight:750;text-transform:uppercase;color:#6761a1}
+.gm32 .gm32-panel{background:#fff;border:1px solid #e4e4f0;border-radius:16px;margin:14px 0;padding:clamp(15px,3vw,24px)}
+.gm32 .gm32-panel h3{color:#39386a;font-size:clamp(17px,2.5vw,20px);margin:0 0 12px;line-height:1.4}
+.gm32 .gm32-panel h4{color:#484778;font-size:15px;margin:0 0 8px}
+.gm32 p{margin:10px 0;line-height:1.75}
+.gm32 .gm32-wide{overflow-x:auto;max-width:100%;overscroll-behavior-x:contain}
+.gm32 table{width:100%;min-width:480px;border-collapse:collapse;text-align:left;font-size:13px;line-height:1.55}
+.gm32 th,.gm32 td{border-bottom:1px solid #ecebf5;vertical-align:top;padding:11px 10px}
+.gm32 th{background:#f3f3fe;color:#4f4b88;font-weight:700}
+.gm32 .gm32-rule,.gm32 .gm32-note{border-radius:12px;background:#f5f3ff;border-left:4px solid #9185cf;padding:12px 15px;margin-top:14px}
+.gm32 .gm32-families{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.gm32 .gm32-families>div{padding:13px;border-radius:11px;background:#f7f7ff;border:1px solid #e6e4f5}
+.gm32 .gm32-families p{font-size:14px;margin:4px 0}
+.gm32 .gm32-triple{background:#f5f7fb;border-radius:12px;padding:12px 17px}
+.gm32 .gm32-triple p{border-bottom:1px solid #dedfee;padding:9px 0;margin:0}
+.gm32 .gm32-triple p:last-child{border:0}
+.gm32 .gm32-warning{display:grid;gap:5px;border-radius:11px;background:#fcf7f9;border:1px solid #f0dde3;padding:12px 14px;margin:11px 0}
+.gm32 .gm32-warning s{color:#a13f58}
+.gm32 .gm32-warning strong{color:#2d7659}
+.gm32 .gm32-warning small{color:#55566a;line-height:1.55}
+.gm32 .gm32-timebar{display:flex;align-items:stretch;justify-content:space-between;gap:9px;margin:18px 0;font-size:13px;line-height:1.4}
+.gm32 .gm32-timebar>span{display:flex;align-items:center;padding:10px;border:1px solid #e7dcca;background:#fff9f0;border-radius:10px}
+.gm32 .gm32-timebar>strong{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;flex:1;padding:13px 8px;border-radius:10px;background:#e8e6ff;color:#4d438e;border-bottom:3px solid #8a78d1}
+.gm32 .gm32-timebar>strong small{font-weight:500;color:#575487}
+.gm32 .gm32-before>span:first-child{background:#e3f4ef;border:1px solid #b3dfd1;font-weight:750}
+.gm32 .gm32-split,.gm32 .gm32-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.gm32 .gm32-split>div,.gm32 .gm32-key>div{padding:13px;background:#f7f7ff;border:1px solid #e9e7f6;border-radius:11px}
+.gm32 .gm32-split small,.gm32 .gm32-key small{display:block;color:#57576b;line-height:1.55}
+.gm32 .gm32-story{padding:14px 17px;border-radius:12px;background:#f7f6ff;border-left:4px solid #8f82d5}
+.gm32 .gm32-story p{margin:4px 0}
+.gm32 .gm32-decision{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+.gm32 .gm32-decision>div{display:flex;flex-direction:column;gap:8px;background:#f0f0fb;border:1px solid #dcdef1;border-radius:10px;padding:12px;font-size:13px}
+.gm32 .gm32-decision span{color:#55577c}
+.gm32 .gm32-decision b{color:#343361}
+.gm32 ol{padding-left:22px}
+.gm32 li{padding:4px 0}
+@media(max-width:640px){.gm32 .gm32-families,.gm32 .gm32-split,.gm32 .gm32-key{grid-template-columns:1fr}.gm32 .gm32-decision{grid-template-columns:1fr}.gm32 .gm32-timebar{font-size:11px}.gm32 table{font-size:12px;min-width:430px}.gm32 th,.gm32 td{padding:9px 8px}}
